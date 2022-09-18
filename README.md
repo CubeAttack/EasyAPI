@@ -1,4 +1,4 @@
-[jitpack]: https://img.shields.io/jitpack/version/com.github.CubeAttack/EasyAPI.svg?label=Snapshots&color=blue
+[jitpack]: https://img.shields.io/jitpack/version/com.github.CubeAttack/EasyAPI.svg?label=release&logo=apachemaven&color=blue
 
 # A very lightweight and easy-to-use api
 
