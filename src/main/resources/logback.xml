@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<configuration scan="true">
+
+    <!-- Configure logger -->
+    <logger name="de.cubeattack" level="TRACE"/>
+    <conversionRule conversionWord="logColor" converterClass="de.cubeattack.easyapi.logger.HighlightingCompositeConverter"/>
+
+    <!-- Appender Configuration [Console] -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMatch>DENY</onMatch>
+        </filter>
+        <encoder>
+            <pattern>\r%d{yyyy-MM-dd HH:mm:ss} [%thread] %logColor([%level] %class - %msg%n)/></pattern>
+        </encoder>
+    </appender>
+
+    <appender name="CONSOLE_ERROR" class="ch.qos.logback.core.ConsoleAppender">
+        <filter class="ch.qos.logback.classic.filter.LevelFilter">
+            <level>ERROR</level>
+            <onMismatch>DENY</onMismatch>
+        </filter>
+        <encoder>
+            <pattern>\r%d{yyyy-MM-dd HH:mm:ss} [%thread] %logColor([%level] %class::%method - %msg%n)/></pattern>
+        </encoder>
+    </appender>
+
+    <!-- Appender Configuration [File] -->
+    <appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/latest.log</file>
+        <encoder> class="ch.qos.logback.classic.PatternLayout">
+            <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] [%level] %class::%method - %msg%n</pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/%d{yyyy-MM-dd}.log</fileNamePattern>
+        </rollingPolicy>
+    </appender>
+
+    <!-- Appender Output Configuration -->
+    <root level="info">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="CONSOLE_ERROR"/>
+        <appender-ref ref="FILE"/>
+    </root>
+
+</configuration>
