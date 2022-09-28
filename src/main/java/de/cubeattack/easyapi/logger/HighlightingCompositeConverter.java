@@ -16,7 +16,7 @@ public class HighlightingCompositeConverter extends ForegroundCompositeConverter
             case Level.WARN_INT -> YELLOW_FG;
             case Level.INFO_INT -> BLUE_FG;
             case Level.DEBUG_INT -> GREEN_FG;
-            case Level.TRACE_INT -> DEFAULT_FG;
+            case Level.TRACE_INT -> CYAN_FG;
             default -> throw new IllegalStateException("Unexpected value: " + level.toInt());
         };
     }
